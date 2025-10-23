@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .boutons{
+      background-color:rgb(233, 186, 194);
+      color:rgb(57, 57, 57);
+      font-size: 16px;
+      padding: 8px;
+      border: 1px;
+      border-radius: 16px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+    body {
+  font-size: 18px;
+  font-family: Arial;
+  margin: 20px; 
+}
+    </style>
+</head>
+<body>
+    <h1>QCM</h1>
+<form name="qcm">
+<p><b>1. Quelle balise permet d'insérer un script JavaScript ?</b><br>
+<input type="radio" name="q1" value="a">&lt;script&gt;<br>
+<input type="radio" name="q1" value="b">&lt;js&gt;<br>
+<input type="radio" name="q1" value="c">&lt;javascript&gt;<br>
+</p>
+<p><b>2. Quelle balise qui permet de retourner à la ligne ?</b><br>
+<input type="radio" name="q2" value="a">&lt;br&gt;<br>
+<input type="radio" name="q2" value="b">&lt;p&gt;<br>
+<input type="radio" name="q2" value="c">br<br>
+</p>
+<p><b>3.Quel balise permet de créer un formulaire ?</b><br>
+<input type="checkbox" name="q3" value="a">&lt;fieldset&lt; <br>
+<input type="checkbox" name="q3" value="b">&lt;form&lt;<br>
+<input type="checkbox" name="q3" value="c">&lt;input&lt;<br>
+</p>
+<p><b>4. Les mots-clés pour déclarer une variable en JavaScript sont ?</b><br>
+<input type="checkbox" name="q4" value="a"> var<br>
+<input type="checkbox" name="q4" value="b"> let<br>
+<input type="checkbox" name="q4" value="c"> int<br>
+</p>
+<p><b>5. Quelles sont les langages de programmation parmi ces propositions ?</b><br>
+<input type="checkbox" name="q5" value="a">html<br>
+<input type="checkbox" name="q5" value="b">MySQL<br>
+<input type="checkbox" name="q5" value="c"> JavaScript<br>
+</p>
+<input class="boutons" type="reset" value="initialiser">
+<input class="boutons" type="button" value="Afficher le corrigé" onClick="afficherCorrige()">
+<input class="boutons" type="button" value="Afficher le résultat" onClick="afficherResultat(this.form)">
+<script language="javascript">
+  // Fonction appelée lorsqu'on clique sur le bouton "Afficher le corrigé"
+function afficherCorrige() {
+  //Ouverture d'une nouvelle fenetre
+  // window.open() crée une nouvelle fenêtre
+  let fenetre = window.open();
+  // document.write() permet d’écrire directement du code HTML dans la fenêtre ouverte: fenetre
+  fenetre.document.write("<h2>Corrigé du QCM</h2>");
+  fenetre.document.write("<p>1. Quelle balise permet d'insérer un script JavaScript ?<br> Réponse: <u style='color:green'>&lt;script&gt;</u></p>");
+  fenetre.document.write("<p>2. Quelle balise qui permet de retourner à la ligne ? <br> Réponse: <u style='color:green'>&lt;br&gt;</u></p>");
+  fenetre.document.write("<p>3. Quel balise permet de créer un formulaire ? <br> Réponse: <u style='color:green'>&lt;fieldset&gt; / &lt;form&gt;</u></p>");
+  fenetre.document.write("<p>4. Les mots-clés pour déclarer une variable en JavaScript sont ? <br> Réponse: <u style='color:green'>var / let</u></p>");
+  fenetre.document.write("<p>5. Quelles sont les langages de programmation parmi ces propositions ?<br> Réponse: <u style='color:green'>JavaScript</u></p>");
+  fenetre.document.close();
+}
+// Fonction appelée lorsqu'on clique sur le bouton "Afficher le résultat"
+function afficherResultat(form) {
+  // Initialisation du score à 0
+  let score = 0;
+  // Ouvrir une nouvelle fenêtre pour afficher les résultats
+  let fenetre1 = window.open();
+  fenetre1.document.write("<h2>Résultat du test</h2>");
+  //Question 1 
+  if (form.q1.value =="a") {
+    fenetre1.document.write("<p style='color:green'>1. correcte</p>");
+    score++;
+  } else {
+    fenetre1.document.write("<p style='color:red'>1. incorrecte</p>");
+  }
+  //Question 2
+  if (form.q2.value =="a") {
+    fenetre1.document.write("<p style='color:green'>2. correcte</p>");
+    score++;
+  } else {
+    fenetre1.document.write("<p style='color:red'>2. incorrecte</p>");
+  }
+
+  //Question 3
+  if (form.q3[0].checked && form.q3[1].checked && !form.q3[2].checked) {
+    fenetre1.document.write("<p style='color:green'>3. correcte</p>");
+    score++;
+  } else {
+    fenetre1.document.write("<p style='color:red'>3. incorrecte</p>");
+  }
+  //Question 4
+  if (form.q4[0].checked && form.q4[1].checked && !form.q4[2].checked) {
+    fenetre1.document.write("<p style='color:green'>4. correcte</p>");
+    score++;
+  } else {
+    fenetre1.document.write("<p style='color:red'>4. incorrecte</p>");
+  }
+  //Question 5
+  if (form.q5[2].checked && !form.q5[0].checked && !form.q5[1].checked) {
+    fenetre1.document.write("<p style='color:green'>5. correcte</p>");
+    score++;
+  } else {
+    fenetre1.document.write("<p style='color:red'>5. incorrecte</p>");
+  }
+  //Score final
+  fenetre1.document.write("<h3>Score final: " + score + " / 5</h3>");
+  fenetre1.document.close();
+}
+</script>
+</form>
+</body>
+</html>
