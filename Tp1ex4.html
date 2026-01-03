@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h3>Somme de trois temps</h3>
+<p>Premier temps :</p>
+<input id="h1" placeholder="Heures">
+<input id="m1" placeholder="Minutes">
+<input id="s1" placeholder="Secondes">
+
+<p>Deuxième temps :</p>
+<input id="h2" placeholder="Heures">
+<input id="m2" placeholder="Minutes">
+<input id="s2" placeholder="Secondes">
+
+<p>Troisième temps :</p>
+<input id="h3" placeholder="Heures">
+<input id="m3" placeholder="Minutes">
+<input id="s3" placeholder="Secondes">
+
+<br>
+<button onclick="calculer()">Somme</button>
+
+<p>Total des 3 temps :</p>
+<p id="resultatTemps"></p>
+
+<script>
+    function calculer() {
+    let h1 = Number(document.getElementById("h1").value);
+    let m1 = Number(document.getElementById("m1").value);
+    let s1 = Number(document.getElementById("s1").value);
+
+    let h2 = Number(document.getElementById("h2").value);
+    let m2 = Number(document.getElementById("m2").value);
+    let s2 = Number(document.getElementById("s2").value);
+
+    let h3 = Number(document.getElementById("h3").value);
+    let m3 = Number(document.getElementById("m3").value);
+    let s3 = Number(document.getElementById("s3").value);
+
+    // conversion en secondes
+    let total =(h1 * 3600 + m1 * 60 + s1) +(h2 * 3600 + m2 * 60 + s2) +(h3 * 3600 + m3 * 60 + s3);
+
+    let jours = Math.floor(total / 86400);
+    total %= 86400;
+
+    let heures = Math.floor(total / 3600);
+    total %= 3600;
+
+    let minutes = Math.floor(total / 60);
+    let secondes = total % 60;
+
+    document.getElementById("resultatTemps").innerHTML ="Jour(s): " + jours +" | Heure(s): " + heures +" | Minute(s): " + minutes +" | Seconde(s): " + secondes;
+}
+</script>
+</body>
+</html>

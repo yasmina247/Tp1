@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Email</title>
+</head>
+<body>
+
+<h3>Vérification d'un email</h3>
+
+<input type="text" id="email" placeholder="Entrer votre email">
+<button onclick="verifierEmail()">Vérifier</button>
+
+<p id="resultat"></p>
+
+<script>
+    function verifierEmail() {
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("resultat");
+
+    // 1. Vérifier la présence de @
+    let positionA = email.indexOf("@");
+
+    // 2. Vérifier la présence du point après @
+    let positionPoint = email.lastIndexOf(".");
+
+    if (
+        positionA > 0 &&                    // au moins un caractère avant @
+        positionPoint > positionA + 1 &&    // point après @
+        positionPoint < email.length - 1     // quelque chose après le point
+    ) {
+        message.innerHTML = "Email valide";
+        message.style.color = "green";
+    } else {
+        message.innerHTML = "Email invalide";
+        message.style.color = "red";
+    }
+}
+</script>
+</body>
+</html>
+
